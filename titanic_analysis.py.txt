@@ -1,0 +1,23 @@
+import pandas as pd
+
+def main():
+    # Cargar datos
+    df = pd.read_csv("data/train.csv")
+
+    # Información básica
+    print("Primeras filas del dataset:")
+    print(df.head())
+
+    print("\nInformación general:")
+    print(df.info())
+
+    print("\nCantidad de pasajeros que sobrevivieron:")
+    print(df['Survived'].value_counts())
+
+    # Supervivencia por sexo
+    survival_by_sex = df.groupby('Sex')['Survived'].mean()
+    print("\nSupervivencia promedio por sexo:")
+    print(survival_by_sex)
+
+if __name__ == "__main__":
+    main()
